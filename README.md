@@ -7,13 +7,13 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/pharmacist-sabot/peddi-dose/blob/main/LICENSE">
-        <img src="https://img.shields.io/github/license/pharmacist-sabot/peddi-dose?style=for-the-badge" alt="License">
+    <a href="https://github.com/suradet-ps/peddi-dose/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/suradet-ps/peddi-dose?style=for-the-badge" alt="License">
     </a>
-    <a href="https://github.com/pharmacist-sabot/peddi-dose/issues">
-        <img src="https://img.shields.io/github/issues/pharmacist-sabot/peddi-dose?style=for-the-badge" alt="Issues">
+    <a href="https://github.com/suradet-ps/peddi-dose/issues">
+        <img src="https://img.shields.io/github/issues/suradet-ps/peddi-dose?style=for-the-badge" alt="Issues">
     </a>
-    <img src="https://img.shields.io/github/stars/pharmacist-sabot/peddi-dose?style=for-the-badge" alt="Stars">
+    <img src="https://img.shields.io/github/stars/suradet-ps/peddi-dose?style=for-the-badge" alt="Stars">
 </p>
 
 ---
@@ -87,7 +87,7 @@
 
 1.  Clone a copy of the repo:
     ```bash
-    git clone https://github.com/pharmacist-sabot/peddi-dose.git
+    git clone https://github.com/suradet-ps/peddi-dose.git
     ```
 2.  เข้าไปที่โฟลเดอร์โปรเจกต์:
     ```bash

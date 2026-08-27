@@ -1,18 +1,16 @@
-# Peddi-Dose
+# Pedi-Dose
 
 > Pediatric dose calculator for healthcare professionals - fast, accurate, mobile-first.
 
-[![License](https://img.shields.io/github/license/suradet-ps/pedi-dose?color=blue&logo=opensourceinitiative&logoColor=ffffff)](https://github.com/suradet-ps/pedi-dose/blob/main/LICENSE)
-[![Version](https://img.shields.io/badge/version-1.0.0-blue?logo=git&logoColor=ffffff)](https://github.com/suradet-ps/pedi-dose)
-[![TypeScript](https://img.shields.io/badge/TypeScript-%5E6-3178C6?logo=typescript&logoColor=ffffff)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-%5E19-61DAFB?logo=react&logoColor=ffffff)](https://react.dev/)
-[![Vite](https://img.shields.io/badge/Vite-%5E8-646CFF?logo=vite&logoColor=ffffff)](https://vite.dev/)
-[![Bun](https://img.shields.io/badge/Bun-1.3.14-f9f1e1?logo=bun&logoColor=ffffff)](https://bun.sh/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?logo=github&logoColor=ffffff)](https://github.com/suradet-ps/pedi-dose/pulls)
+[![License: MIT](https://img.shields.io/github/license/suradet-ps/pedi-dose?color=blue)](https://github.com/suradet-ps/pedi-dose/blob/main/LICENSE)
+[![CI](https://img.shields.io/github/actions/workflow/status/suradet-ps/pedi-dose/ci.yml?label=CI&logo=github)](https://github.com/suradet-ps/pedi-dose/actions/workflows/ci.yml)
+[![Version](https://img.shields.io/github/package-json/v/suradet-ps/pedi-dose?label=version)](https://github.com/suradet-ps/pedi-dose/blob/main/package.json)
+[![Last Commit](https://img.shields.io/github/last-commit/suradet-ps/pedi-dose?logo=git)](https://github.com/suradet-ps/pedi-dose/commits/main)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?logo=github)](https://github.com/suradet-ps/pedi-dose/pulls)
 
 ---
 
-**Peddi-Dose** is a progressive web application (PWA) that helps pharmacists, doctors, and healthcare professionals calculate pediatric liquid medication dosages quickly and accurately. It computes dose ranges in both milliliters (ml) and milligrams per dose (mg/dose) based on patient weight, with administration guidance for every drug.
+**Pedi-Dose** is a progressive web application (PWA) that helps pharmacists, doctors, and healthcare professionals calculate pediatric liquid medication dosages quickly and accurately. It computes dose ranges in both milliliters (ml) and milligrams per dose (mg/dose) based on patient weight, with administration guidance for every drug.
 
 ---
 
@@ -26,7 +24,7 @@
 - **Persistent selection** - last-used drug is remembered via `localStorage`.
 - **Dark mode** - automatically follows the system `prefers-color-scheme` setting.
 - **Accessible** - keyboard navigable, screen-reader friendly, visible focus indicators.
-- **10 pre-loaded drugs** - covers common pediatric antibiotics, antipyretics, antihistamines, and more.
+- **11 pre-loaded drugs** - covers common pediatric antibiotics, antipyretics, antihistamines, and more.
 
 ---
 
@@ -83,49 +81,6 @@ bun run format     # Prettier
 
 ---
 
-## Project Structure
-
-```
-pedi-dose/
-├── public/                        # Static assets (icons)
-├── src/
-│   ├── components/                # React components
-│   │   ├── Calculator.tsx         # Main calculator form
-│   │   ├── ResultCard.tsx         # Dose result display
-│   │   ├── ErrorBoundary.tsx      # Class-based error boundary
-│   │   ├── Header.tsx             # App header
-│   │   └── Footer.tsx             # Attribution footer
-│   ├── data/
-│   │   └── drugData.ts            # Drug database (immutable typed)
-│   ├── hooks/
-│   │   ├── useDoseCalculator.ts   # Root hook: orchestrates state
-│   │   ├── useDrugSelector.ts     # Drug selection + localStorage
-│   │   └── useManualDose.ts       # Manual mode state
-│   ├── types/
-│   │   ├── drug.ts                # Drug, DrugCategory, DrugTiming
-│   │   ├── calculation.ts         # DoseResult (discriminated union)
-│   │   ├── components.ts          # Component prop interfaces
-│   │   └── index.ts               # Barrel exports
-│   ├── utils/
-│   │   └── doseMath.ts            # Pure dose calculation functions
-│   ├── styles/
-│   │   ├── tokens.css             # Design tokens (modern slate + blue accent)
-│   │   ├── base.css               # CSS reset + globals
-│   │   └── app.css                # Component styles
-│   ├── App.tsx                    # Root composition
-│   ├── main.tsx                   # Entry point
-│   └── vite-env.d.ts              # Vite client type declarations
-├── DESIGN.md                      # Design system documentation
-├── eslint.config.js               # ESLint flat config (type-aware)
-├── tsconfig.json                  # Strict TypeScript configuration
-├── vite.config.ts                 # Vite + PWA configuration
-├── .prettierrc.json               # Prettier configuration
-├── vercel.json                    # Vercel deployment configuration
-└── package.json                   # Project metadata
-```
-
----
-
 ## Available Drugs
 
 | Drug | Concentration | Category |
@@ -140,6 +95,7 @@ pedi-dose/
 | Guafenesine (Guaifenesin) | 100 mg / 5 ml | Mucolytic |
 | Ibuprofen | 100 mg / 5 ml | Antipyretic |
 | Paracetamol | 120 mg / 5 ml | Antipyretic |
+| Salbutamol (Ventolin) | 2 mg / 5 ml | Bronchodilator |
 
 > Drug data is maintained in [`src/data/drugData.ts`](src/data/drugData.ts) and uses `as const satisfies readonly Drug[]` for full type safety.
 

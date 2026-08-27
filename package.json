@@ -17,10 +17,10 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\""
   },
   "dependencies": {
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
   },
-  "devDependencies": {
+"devDependencies": {
     "@eslint/js": "^10.0.0",
     "@types/node": "^26.0.0",
     "@types/react": "^19.1.8",
@@ -36,5 +36,11 @@
     "vite": "^8.0.0",
     "vite-plugin-pwa": "^1.0.2",
     "vitest": "^4.1.11"
+  },
+  "overrides": {
+    "fast-uri": "^3.1.6",
+    "minimatch": "^10.2.5",
+    "nanoid": "^3.3.18",
+    "postcss": "^8.5.26"
   }
 }

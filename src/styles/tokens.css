@@ -1,37 +1,52 @@
 /* src/styles/tokens.css
  * Design tokens. Single source of truth.
- * Following DESIGN.md: monochrome + Electric Blue accent.
+ * Modern: soft surfaces, layered elevation, slate neutrals, blue accent.
  */
 
 :root {
-  /* === Primary === */
-  --color-electric-blue: #3e6ae1;
-  --color-electric-blue-hover: #3457b8;
+  /* === Accent === */
+  --color-accent: #3e6ae1;
+  --color-accent-hover: #3457b8;
+  --color-accent-soft: rgba(62, 106, 225, 0.09);
+  --color-accent-border: rgba(62, 106, 225, 0.22);
+  --gradient-accent: linear-gradient(135deg, #3e6ae1 0%, #6f8ff2 100%);
+  --glow: rgba(62, 106, 225, 0.08);
 
   /* === Surfaces === */
-  --color-canvas: #ffffff;
-  --color-surface: #f7f7f7;
-  --color-divider: #ececec;
+  --color-canvas: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f1f4f9;
+  --color-border: #e4e8f0;
+  --color-border-strong: #d3dae6;
 
   /* === Text === */
-  --text-primary: #171a20;
-  --text-body: #393c41;
-  --text-tertiary: #5c5e62;
-  --text-placeholder: #8e8e8e;
+  --text-primary: #101828;
+  --text-body: #475467;
+  --text-tertiary: #667085;
+  --text-placeholder: #98a2b3;
+
+  /* === Elevation === */
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.04);
+  --shadow-md: 0 2px 4px rgba(16, 24, 40, 0.04), 0 8px 24px -6px rgba(16, 24, 40, 0.1);
+  --shadow-focus: 0 0 0 4px rgba(62, 106, 225, 0.16);
 
   /* === Typography === */
-  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Leelawadee UI', 'Noto Sans Thai', Tahoma,
+    'Helvetica Neue', Arial, sans-serif;
 
-  --fs-title: 1.25rem;     /* 20px - page title */
-  --fs-result: 2.25rem;    /* 36px - result value (mobile) */
-  --fs-body: 0.9375rem;    /* 15px */
-  --fs-label: 0.8125rem;   /* 13px */
-  --fs-caption: 0.75rem;   /* 12px */
+  --fs-display: 1.75rem; /* 28px - hero title */
+  --fs-title: 1.25rem; /* 20px */
+  --fs-result: 2.375rem; /* 38px - result value (mobile) */
+  --fs-body: 0.9375rem; /* 15px */
+  --fs-label: 0.875rem; /* 14px */
+  --fs-caption: 0.75rem; /* 12px */
 
   --fw-regular: 400;
   --fw-medium: 500;
+  --fw-semibold: 600;
 
-  --lh-body: 1.5;
+  --lh-body: 1.55;
 
   /* === Spacing (8px base) === */
   --sp-1: 0.25rem;
@@ -41,25 +56,42 @@
   --sp-5: 1.5rem;
   --sp-6: 2rem;
   --sp-7: 2.5rem;
+  --sp-8: 3rem;
 
   /* === Radius === */
-  --r: 4px;
+  --r-sm: 8px;
+  --r: 12px;
+  --r-lg: 16px;
+  --r-full: 999px;
 
   /* === Motion === */
-  --t: 0.33s;
-  --ease: cubic-bezier(0.5, 0, 0, 0.75);
+  --t: 0.25s;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* === Dark mode (auto from system) === */
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-canvas: #171a20;
-    --color-surface: #1f232b;
-    --color-divider: #2a2f37;
+    --color-accent: #6f8ff2;
+    --color-accent-hover: #8aa4f5;
+    --color-accent-soft: rgba(111, 143, 242, 0.14);
+    --color-accent-border: rgba(111, 143, 242, 0.32);
+    --gradient-accent: linear-gradient(135deg, #6f8ff2 0%, #9db4f7 100%);
+    --glow: rgba(111, 143, 242, 0.12);
 
-    --text-primary: #ffffff;
-    --text-body: #d0d1d2;
-    --text-tertiary: #a0a0a0;
-    --text-placeholder: #5c5e62;
+    --color-canvas: #0b0f19;
+    --color-surface: #121826;
+    --color-surface-muted: #1a2233;
+    --color-border: #232c40;
+    --color-border-strong: #2f3a52;
+
+    --text-primary: #f2f5f9;
+    --text-body: #c3cbdc;
+    --text-tertiary: #97a1b8;
+    --text-placeholder: #5e6a82;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px -4px rgba(0, 0, 0, 0.45);
+    --shadow-focus: 0 0 0 4px rgba(111, 143, 242, 0.25);
   }
 }

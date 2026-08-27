@@ -5,10 +5,7 @@ export function roundToHalf(num: number): number {
   return Math.round(num * 2) / 2;
 }
 
-export function calculateDoseRange(
-  weight: number,
-  drug: Drug,
-): DoseRangeOutput {
+export function calculateDoseRange(weight: number, drug: Drug): DoseRangeOutput {
   const totalMinMg = weight * drug.minDosePerKg;
   const totalMaxMg = weight * drug.maxDosePerKg;
   const minMl = (totalMinMg * drug.volume) / drug.concentration;

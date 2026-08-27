@@ -12,7 +12,7 @@ const metaThemeColor = document.querySelector<HTMLMetaElement>('meta[name="theme
 if (metaThemeColor !== null) {
   const mq = window.matchMedia('(prefers-color-scheme: dark)');
   const updateThemeColor = () => {
-    metaThemeColor.content = mq.matches ? '#171a20' : '#ffffff';
+    metaThemeColor.content = mq.matches ? '#0b0f19' : '#f6f8fb';
   };
   updateThemeColor();
   mq.addEventListener('change', updateThemeColor);

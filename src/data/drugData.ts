@@ -157,14 +157,15 @@ export const drugList = [
   },
 ] as const satisfies readonly Drug[];
 
-export const drugsByCategory: Readonly<Record<string, readonly Drug[]>> =
-  drugList.reduce<Record<string, Drug[]>>((acc, drug) => {
-    const category: string = drug.category;
-    const existing = acc[category];
-    if (existing === undefined) {
-      acc[category] = [drug];
-    } else {
-      existing.push(drug);
-    }
-    return acc;
-  }, {});
+export const drugsByCategory: Readonly<Record<string, readonly Drug[]>> = drugList.reduce<
+  Record<string, Drug[]>
+>((acc, drug) => {
+  const category: string = drug.category;
+  const existing = acc[category];
+  if (existing === undefined) {
+    acc[category] = [drug];
+  } else {
+    existing.push(drug);
+  }
+  return acc;
+}, {});

@@ -29,11 +29,7 @@ class ErrorBoundary extends Component<PropsWithChildren, ErrorBoundaryState> {
         <div className="error-boundary" role="alert">
           <h2 className="error-boundary__title">เกิดข้อผิดพลาด</h2>
           <p className="error-boundary__message">กรุณาลองใหม่อีกครั้ง หรือติดต่อเจ้าหน้าที่</p>
-          <button
-            className="error-boundary__button"
-            type="button"
-            onClick={this.handleReset}
-          >
+          <button className="error-boundary__button" type="button" onClick={this.handleReset}>
             ลองใหม่
           </button>
         </div>

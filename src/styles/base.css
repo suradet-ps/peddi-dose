@@ -22,7 +22,9 @@ body {
   line-height: var(--lh-body);
   color: var(--text-body);
   background-color: var(--color-canvas);
-  transition: background-color var(--t), color var(--t);
+  transition:
+    background-color var(--t),
+    color var(--t);
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -32,8 +34,13 @@ body {
   min-height: 100dvh;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: var(--fw-medium);
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--fw-semibold);
   color: var(--text-primary);
   letter-spacing: normal;
 }
@@ -54,12 +61,41 @@ button {
   color: inherit;
 }
 
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
 ::selection {
-  background-color: var(--color-electric-blue);
+  background-color: var(--color-accent);
   color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-electric-blue);
+  outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+/* === Reduced motion === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

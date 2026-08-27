@@ -1,6 +1,5 @@
 /* src/styles/app.css
- * Mobile-first single-screen calculator.
- * No shadows. No gradients. No decorative elements.
+ * Modern UI: soft elevation, layered surfaces, restrained accent.
  */
 
 /* ============================================================
@@ -13,32 +12,26 @@
   min-height: 100dvh;
 }
 
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 320px;
+  background: radial-gradient(60% 100% at 50% 0%, var(--glow) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .app__main {
+  position: relative;
+  z-index: 1;
   flex: 1;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: var(--sp-4) var(--sp-4) var(--sp-6);
-}
-
-/* ============================================================
- * Header - minimal, just brand
- * ============================================================ */
-.app-header {
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid var(--color-divider);
-  transition: border-color var(--t);
-}
-
-.app-header__brand {
-  font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
-  color: var(--text-primary);
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  padding: var(--sp-5) var(--sp-4) var(--sp-7);
 }
 
 /* ============================================================
@@ -46,18 +39,34 @@
  * ============================================================ */
 .calc {
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
   display: flex;
   flex-direction: column;
   gap: var(--sp-5);
-  padding-top: var(--sp-2);
 }
 
 .calc__title {
-  font-size: var(--fs-title);
-  font-weight: var(--fw-medium);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-semibold);
   color: var(--text-primary);
-  line-height: 1.3;
+  line-height: 1.25;
+}
+
+.calc__subtitle {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-body);
+  color: var(--text-tertiary);
+}
+
+.calc__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .calc__form {
@@ -77,39 +86,73 @@
 
 .field__row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--sp-3);
 }
 
 .field__label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
   font-size: var(--fs-label);
-  font-weight: var(--fw-medium);
+  font-weight: var(--fw-semibold);
   color: var(--text-primary);
 }
 
+.field__step {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  font-size: 0.6875rem;
+  font-weight: var(--fw-semibold);
+}
+
 .field__manual-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
   font-size: var(--fs-caption);
-  font-weight: var(--fw-medium);
-  color: var(--color-electric-blue);
-  padding: 0;
-  transition: color var(--t);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--r-full);
+  transition:
+    background-color var(--t) var(--ease),
+    color var(--t) var(--ease),
+    border-color var(--t) var(--ease);
 }
 
 .field__manual-toggle:hover {
-  color: var(--color-electric-blue-hover);
+  background-color: var(--color-accent-border);
+}
+
+.field__manual-toggle[aria-pressed='true'] {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #ffffff;
+  box-shadow: var(--shadow-sm);
 }
 
 .field__input {
-  height: 48px;
+  height: 52px;
   width: 100%;
   padding: 0 var(--sp-4);
   font-size: var(--fs-body);
   color: var(--text-primary);
-  background-color: var(--color-surface);
-  border: 1px solid transparent;
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border);
   border-radius: var(--r);
-  transition: background-color var(--t), border-color var(--t);
+  transition:
+    background-color var(--t) var(--ease),
+    border-color var(--t) var(--ease),
+    box-shadow var(--t) var(--ease);
   -webkit-appearance: none;
   appearance: none;
 }
@@ -118,9 +161,13 @@
   color: var(--text-placeholder);
 }
 
+.field__input:hover:not(:focus) {
+  border-color: var(--color-border-strong);
+}
+
 .field__input:focus {
-  background-color: var(--color-canvas);
-  border-color: var(--color-electric-blue);
+  background-color: var(--color-surface);
+  border-color: var(--color-accent);
 }
 
 .field--manual {
@@ -128,8 +175,14 @@
 }
 
 @keyframes slide-down {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Select */
@@ -144,9 +197,36 @@
 
 .select-wrap__icon {
   position: absolute;
+  right: var(--sp-3);
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+/* Input with inline suffix (kg) */
+.input-wrap {
+  position: relative;
+}
+
+.input-wrap .field__input {
+  padding-right: var(--sp-7);
+}
+
+.input-wrap__suffix {
+  position: absolute;
   right: var(--sp-4);
   top: 50%;
   transform: translateY(-50%);
+  font-size: var(--fs-label);
+  font-weight: var(--fw-medium);
   color: var(--text-tertiary);
   pointer-events: none;
 }
@@ -157,18 +237,37 @@
 .result {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
-  padding: var(--sp-5) 0;
-  border-top: 1px solid var(--color-divider);
-  margin-top: var(--sp-2);
+  gap: var(--sp-2);
+  padding: var(--sp-5);
+  background-color: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--r-lg);
+}
+
+.result__label {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  letter-spacing: 0.04em;
+}
+
+.result__label::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
 }
 
 .result__value {
   font-size: var(--fs-result);
-  font-weight: var(--fw-medium);
-  color: var(--color-electric-blue);
-  line-height: 1.1;
-  letter-spacing: -0.01em;
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -177,53 +276,46 @@
   font-weight: var(--fw-regular);
   color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
-  margin-top: -4px;
 }
 
 .result__notes {
-  font-size: var(--fs-caption);
-  color: var(--text-body);
-  line-height: 1.5;
   display: flex;
   flex-direction: column;
   gap: var(--sp-1);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--color-accent-border);
+  font-size: var(--fs-caption);
+  color: var(--text-body);
+  line-height: 1.55;
 }
 
 .result__notes-label {
-  font-weight: var(--fw-medium);
-  color: var(--text-tertiary);
+  font-weight: var(--fw-semibold);
+  color: var(--color-accent);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-size: 0.6875rem;
 }
 
-.result__empty {
+.result--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-6) var(--sp-4);
+  text-align: center;
   font-size: var(--fs-caption);
   color: var(--text-placeholder);
-  text-align: center;
-  padding: var(--sp-5) 0;
-  border-top: 1px solid var(--color-divider);
-  margin-top: var(--sp-2);
+  background-color: transparent;
+  border: 1px dashed var(--color-border-strong);
 }
 
-/* ============================================================
- * Footer
- * ============================================================ */
-.app-footer {
-  padding: var(--sp-4) var(--sp-4) var(--sp-5);
-  border-top: 1px solid var(--color-divider);
-  text-align: center;
-  font-size: var(--fs-caption);
+.result--empty svg {
   color: var(--text-tertiary);
-  transition: border-color var(--t);
-}
-
-.app-footer p {
-  line-height: 1.4;
 }
 
 /* ============================================================
- * Error boundary
+ * Skip link
  * ============================================================ */
 .skip-link {
   position: absolute;
@@ -231,11 +323,11 @@
   left: var(--sp-3);
   z-index: 100;
   padding: var(--sp-2) var(--sp-3);
-  background-color: var(--color-electric-blue);
+  background-color: var(--color-accent);
   color: #ffffff;
   font-size: var(--fs-label);
   font-weight: var(--fw-medium);
-  border-radius: var(--r);
+  border-radius: var(--r-full);
   text-decoration: none;
 }
 
@@ -270,17 +362,20 @@
 }
 
 .error-boundary__button {
-  padding: var(--sp-2) var(--sp-5);
-  background-color: var(--color-electric-blue);
+  padding: 10px 24px;
+  background-image: var(--gradient-accent);
   color: #ffffff;
-  border-radius: var(--r);
-  font-weight: var(--fw-medium);
+  border-radius: var(--r-full);
+  font-weight: var(--fw-semibold);
   font-size: var(--fs-body);
-  transition: background-color var(--t);
+  box-shadow: var(--shadow-sm);
+  transition:
+    filter var(--t) var(--ease),
+    box-shadow var(--t) var(--ease);
 }
 
 .error-boundary__button:hover {
-  background-color: var(--color-electric-blue-hover);
+  filter: brightness(1.08);
 }
 
 /* ============================================================
@@ -288,15 +383,20 @@
  * ============================================================ */
 @media (min-width: 600px) {
   :root {
+    --fs-display: 2rem; /* 32px */
     --fs-result: 3rem; /* 48px */
   }
 
   .app__main {
-    padding: var(--sp-7) var(--sp-4) var(--sp-7);
+    padding: var(--sp-7) var(--sp-4) var(--sp-8);
   }
 
   .calc {
     gap: var(--sp-6);
+  }
+
+  .calc__card {
+    padding: var(--sp-6);
   }
 
   .calc__form {

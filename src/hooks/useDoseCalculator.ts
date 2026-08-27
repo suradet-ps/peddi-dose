@@ -24,8 +24,11 @@ export interface UseDoseCalculatorResult {
 export function useDoseCalculator(): UseDoseCalculatorResult {
   const [weight, setWeight] = useState<string>('');
 
-  const { selectedDrugId, selectedDrug, handleDrugChange: baseHandleDrugChange }: UseDrugSelectorResult =
-    useDrugSelector();
+  const {
+    selectedDrugId,
+    selectedDrug,
+    handleDrugChange: baseHandleDrugChange,
+  }: UseDrugSelectorResult = useDrugSelector();
 
   const { isManualMode, setIsManualMode, manualDose, setManualDose }: UseManualDoseResult =
     useManualDose();

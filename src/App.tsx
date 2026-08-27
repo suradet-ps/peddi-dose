@@ -1,6 +1,4 @@
-import { Header } from './components/Header';
 import { Calculator } from './components/Calculator';
-import { Footer } from './components/Footer';
 import { useDoseCalculator } from './hooks/useDoseCalculator';
 
 export default function App() {
@@ -19,8 +17,9 @@ export default function App() {
 
   return (
     <div className="app">
-      <a href="#main-content" className="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
-      <Header />
+      <a href="#main-content" className="skip-link">
+        ข้ามไปยังเนื้อหาหลัก
+      </a>
       <main className="app__main" id="main-content">
         <Calculator
           weight={weight}
@@ -35,7 +34,6 @@ export default function App() {
           result={result}
         />
       </main>
-      <Footer />
     </div>
   );
 }

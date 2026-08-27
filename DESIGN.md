@@ -1,286 +1,234 @@
-# Design System Inspired by Tesla
+# Design System - Pedi-Dose
 
 ## 1. Visual Theme & Atmosphere
 
-Tesla's website is an exercise in radical subtraction - a digital showroom where the product is everything and the interface is almost nothing. The page opens with a full-viewport hero that fills the entire screen with cinematic car photography: three vehicles arranged on polished concrete against a hazy cityscape sky, with a single model name floating above in translucent white type. There are no decorative borders, no gradients, no patterns, no shadows. The UI exists only to provide just enough navigational structure to get out of the way. Every pixel that isn't product imagery is white space, and that restraint is the design system's most powerful statement.
+Pedi-Dose is a pediatric liquid-dose calculator for healthcare professionals - a single-screen tool that must feel precise, calm, and trustworthy. The interface is built around one job: choose a drug, enter a weight, read the result. Everything in the visual system serves that clarity.
 
-The color philosophy is almost ascetic: a single blue (`#3E6AE1`) for primary calls to action, three shades of dark gray for text hierarchy, and white for everything else. The entire emotional weight is carried by photography - sprawling landscape shots, studio-lit vehicle profiles, and atmospheric environmental compositions that stretch edge-to-edge across each viewport-height section. The UI chrome dissolves into the imagery. The navigation bar floats above the hero with no visible background, border, or shadow - the TESLA wordmark and five navigation labels simply exist in the space, trusting the content beneath them to provide sufficient contrast.
-
-Typography recently transitioned from Gotham to Universal Sans - a custom family split into "Display" for headlines and "Text" for body/UI elements - unifying the website, mobile app, and in-car software into a single typographic voice. The Display variant renders hero titles at 40px weight 500, while the Text variant handles everything from navigation (14px/500) to body copy (14px/400). The font carries a geometric precision with slightly humanist terminals that feels engineered rather than designed - exactly matching Tesla's brand identity of technology that doesn't need to announce itself. There are no text shadows, no text gradients, no decorative type treatments. Every letterform earns its place through clarity alone.
+The page opens with a soft radial glow at the top of the viewport - a barely-there wash of blue that gives the canvas warmth without competing with content. Below it sits a compact hero (title + subtitle), then a single elevated card containing the entire workflow. The card floats on a light slate canvas with layered, soft shadows, and the result appears inside a blue-tinted panel so the answer is impossible to miss.
 
 **Key Characteristics:**
-- Full-viewport hero sections (100vh) dominated by cinematic car photography with minimal overlay UI
-- Near-zero UI decoration: no shadows, no gradients, no borders, no patterns anywhere on the page
-- Single accent color - Electric Blue (`#3E6AE1`) - used exclusively for primary CTA buttons
-- Universal Sans font family (Display + Text) unifying web, app, and in-car interfaces
-- Photography-first presentation where product imagery carries all emotional weight
-- Frosted-glass navigation concept with transparent/white nav that floats over hero content
-- 0.33s cubic-bezier transitions as the universal timing for all interactive state changes
-- Carousel-driven hero with dot indicators and edge arrow navigation for multiple vehicle showcases
-- "Ask a Question" persistent chatbot bar anchored to the viewport bottom
+- Single-screen, single-column layout with a clear flow: hero -> input card -> result
+- Soft, layered elevation: cards cast gentle multi-layer shadows instead of sitting flat
+- One chromatic accent - Blue (`#3E6AE1`) - used for interactive states, focus rings, and the result value
+- Restrained gradient: used only on the error-boundary button and background glow, never on content surfaces
+- Slate-based neutrals in both light and dark mode, tuned for Thai text legibility
+- Step indicators (numbered circles) give the two-field form a guided, wizard-like feel
+- 0.25s cubic-bezier transitions for all interactive state changes
+- Dark mode follows the system preference automatically, with a fully re-tuned palette
+- `prefers-reduced-motion` disables all animation for users who request it
 
 ## 2. Color Palette & Roles
 
 ### Primary
-- **Electric Blue** (`#3E6AE1`): Primary CTA button background - a confident, mid-saturation blue (rgb 62, 106, 225) that stands alone as the only chromatic color in the entire interface. Used exclusively for "Order Now" and other primary action buttons
-- **Pure White** (`#FFFFFF`): Dominant background color for all surfaces, panels, navigation, and secondary button fills - the canvas that lets photography breathe
-
-### Secondary & Accent
-- **Promo Blue** (`#3E6AE1`): Blue also serves for promotional text ("0% APR Available") displayed over hero imagery in the same hue as the CTA - creating a visual link between incentive messaging and action
-- No secondary accent colors exist. Tesla deliberately avoids color variety to maintain extreme visual discipline
+- **Blue** (`#3E6AE1`): The single chromatic accent. Used for the result value, focus rings, step numbers, toggle (pressed state), notes label, and skip link. In dark mode it shifts to a lighter `#6F8FF2` to hold contrast on dark surfaces
+- **Blue Soft** (`rgba(62,106,225,0.09)` light / `rgba(111,143,242,0.14)` dark): Tinted panel background for the result card and step-number circles
+- **Blue Border** (`rgba(62,106,225,0.22)` light / `rgba(111,143,242,0.32)` dark): Hairline border for the result card and toggle pill
 
 ### Surface & Background
-- **White Canvas** (`#FFFFFF`): Page background, navigation panel, dropdown menus, and all surface containers
-- **Light Ash** (`#F4F4F4`): Subtle alternate surface for section differentiation - barely perceptible shift from pure white (rgb 244, 244, 244)
-- **Carbon Dark** (`#171A20`): Dark surface color for hero text overlays and potential dark-mode contexts (rgb 23, 26, 32) - a warm near-black with a blue undertone
-- **Frosted Glass** (`rgba(255, 255, 255, 0.75)`): Semi-transparent white for navigation backdrop-filter effects on scroll
+- **Canvas** (`#F6F8FB` light / `#0B0F19` dark): Page background - a cool off-white in light mode instead of pure white, keeping the white card visibly elevated
+- **Surface** (`#FFFFFF` light / `#121826` dark): Card panels and input focus background
+- **Surface Muted** (`#F1F4F9` light / `#1A2233` dark): Input field fill at rest
+- **Border** (`#E4E8F0` light / `#232C40` dark): Default hairline borders on cards and inputs
+- **Border Strong** (`#D3DAE6` light / `#2F3A52` dark): Hover border on inputs and dashed empty-state border
 
 ### Neutrals & Text
-- **Carbon Dark** (`#171A20`): Primary heading and navigation text - the darkest text value (rgb 23, 26, 32), used for model names, nav labels, and hero titles on light backgrounds
-- **Graphite** (`#393C41`): Body text and secondary content (rgb 57, 60, 65) - the default paragraph color, slightly warmer than pure gray
-- **Pewter** (`#5C5E62`): Tertiary text for sub-links, secondary navigation links like "Learn" and "Order" (rgb 92, 94, 98)
-- **Silver Fog** (`#8E8E8E`): Placeholder text in input fields and disabled states (rgb 142, 142, 142)
-- **Cloud Gray** (`#EEEEEE`): Light borders and divider lines (rgb 238, 238, 238)
-- **Pale Silver** (`#D0D1D2`): Subtle UI borders and delineation (rgb 208, 209, 210)
-
-### Semantic & Accent
-- Tesla's marketing site avoids semantic color coding (no green/red/yellow status indicators). Error, success, and warning states follow standard browser defaults in form contexts
-- The blue CTA (`#3E6AE1`) serves as the sole interactive color signal
+- **Ink** (`#101828` light / `#F2F5F9` dark): Primary text - headings, labels, input values
+- **Slate** (`#475467` light / `#C3CBDC` dark): Body text and result notes
+- **Pewter** (`#667085` light / `#97A1B8` dark): Tertiary text - subtitle, secondary result, kg suffix
+- **Silver** (`#98A2B3` light / `#5E6A82` dark): Placeholder text and empty-state message
 
 ### Gradient System
-- No gradients are used anywhere in the interface
-- Depth is achieved entirely through photography, whitespace, and the binary contrast between full-bleed imagery and clean white surfaces
-- The navigation achieves layering through opacity (frosted glass effect) rather than gradient or shadow
+- **Accent Gradient** (`linear-gradient(135deg, #3E6AE1, #6F8FF2)` light / `#6F8FF2 -> #9DB4F7` dark): Used in exactly two places - the error-boundary retry button and nowhere else. The gradient exists to give the rare destructive/retry action a moment of visual weight
+- **Top Glow** (`rgba(62,106,225,0.08)` light / `rgba(111,143,242,0.12)` dark): A fixed radial gradient (320px tall) washing down from the top of the viewport, behind all content. Subtle enough to read as lighting, not decoration
 
 ## 3. Typography Rules
 
 ### Font Family
-- **Display**: `Universal Sans Display`, -apple-system, Arial, sans-serif - used for hero titles and large model names. A geometric sans-serif with precisely engineered proportions, recently replacing Gotham to unify Tesla's digital ecosystem (website, mobile app, vehicle interface)
-- **Text/UI**: `Universal Sans Text`, -apple-system, Arial, sans-serif - used for navigation, body copy, buttons, and all UI text. Optimized for legibility at smaller sizes with slightly wider proportions than the Display variant
-- **No OpenType features** detected - typography is completely unembellished
-- **No italic variants** observed on the marketing site
+- **System stack**: `-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Leelawadee UI', 'Noto Sans Thai', Tahoma, 'Helvetica Neue', Arial, sans-serif` - the stack explicitly includes Thai-friendly faces (Leelawadee UI, Noto Sans Thai, Tahoma) after the Latin-first system fonts, since the UI copy is Thai
+- No webfonts are loaded (CSP is `font-src 'self'`), keeping the install offline-capable and fast
+- No italic or decorative variants are used
 
 ### Hierarchy
 
-| Role | Size | Weight | Line Height | Letter Spacing | Notes |
-|------|------|--------|-------------|----------------|-------|
-| Hero Title | 40px (2.50rem) | 500 | 48px (1.20) | normal | Universal Sans Display, white on dark hero imagery |
-| Product Name | 17px (1.06rem) | 500 | 20px (1.18) | normal | Universal Sans Text, model names in nav panel and cards |
-| Nav Item | 14px (0.88rem) | 500 | 16.8px (1.20) | normal | Universal Sans Text, primary navigation labels |
-| Body Text | 14px (0.88rem) | 400 | 20px (1.43) | normal | Universal Sans Text, paragraph and descriptive content |
-| Button Label | 14px (0.88rem) | 500 | 16.8px (1.20) | normal | Universal Sans Text, CTA button text |
-| Sub-link | 14px (0.88rem) | 400 | 20px (1.43) | normal | Tertiary links (Learn, Order, Experience) |
-| Promo Text | 22px (1.38rem) | 400 | 20px (0.91) | normal | White promotional text on hero ("0% APR Available") |
-| Category Label | 16px (est.) | 500 | - | normal | White text labels on category cards ("Sport Sedan") |
+| Role | Size | Weight | Line Height | Notes |
+|------|------|--------|-------------|-------|
+| Hero Title | 28px (1.75rem) mobile, 32px (2rem) desktop | 600 | 1.25 | "คำนวณขนาดยาน้ำเด็ก" |
+| Subtitle | 15px (0.9375rem) | 400 | 1.55 | Tertiary text |
+| Field Label | 14px (0.875rem) | 600 | - | Ink, paired with step number |
+| Result Value | 38px (2.375rem) mobile, 48px (3rem) desktop | 600 | 1.15 | Blue, tabular-nums, -0.02em tracking |
+| Secondary Result | 15px (0.9375rem) | 400 | - | Pewter, tabular-nums |
+| Notes Label | 11px (0.6875rem) | 600 | - | Uppercase, 0.08em tracking, Blue |
+| Body / Notes | 15px / 12px | 400 | 1.55 | Slate |
 
 ### Principles
-- **"Normal" letter-spacing everywhere**: Unlike most modern tech brands that use negative tracking for headlines, Tesla uses default letter-spacing at every level. This reflects a philosophy that the typeface should speak for itself without manipulation
-- **Weight restraint**: Only two weights appear - 500 (medium) for headings/UI and 400 (regular) for body. No bold (700), no light (300). The system avoids typographic drama
-- **Unified font sizing**: Most UI text clusters at 14px with only hero titles (40px) and promo text (22px) breaking away. This extreme uniformity creates a sense of engineered consistency
-- **Display vs Text split**: The two-variant system (Display for hero, Text for UI) creates subtle optical correction without visible stylistic difference - they appear as the same typeface at different sizes
-- **No text transforms**: No uppercase text appears in the main navigation or CTAs - the lowercase approach reinforces Tesla's understated confidence
+- **Three weights only**: 400 (regular) for body and secondary content, 500 (medium) for badges and toggles, 600 (semibold) for headings, labels, and the result value. No bold 700, no light
+- **Thai-first legibility**: Thai glyphs keep normal letter-spacing; negative tracking is applied only to numerals (result value, -0.02em)
+- **The number is the hero**: the result uses tabular-nums so digits never jump while typing, at 38-48px semibold in Blue - the single loudest element on the page
+- **Uppercase only for micro-labels**: the 11px "คำแนะนำ" label is the only uppercase text, functioning as a caption, not display type
 
 ## 4. Component Stylings
 
 ### Buttons
-All buttons use barely-rounded rectangles (4px border-radius) - creating a sharp, technical aesthetic that mirrors the precision of the vehicles.
+Two button flavors exist, both pill-shaped (999px radius):
 
-**Primary CTA** - The main action button:
-- Default: bg `#3E6AE1` (Electric Blue), text `#FFFFFF`, fontSize 14px, fontWeight 500, padding 4px with inner content centering, borderRadius 4px, minHeight 40px, width 200px
-- Border: 3px solid transparent (reserves space for focus/active border animation)
-- Box Shadow: `rgba(0,0,0,0) 0px 0px 0px 2px inset` (invisible at rest, animates to visible on focus)
-- Transition: `border-color 0.33s, background-color 0.33s, color 0.33s, box-shadow 0.25s`
-- Hover: subtle darkening of blue background
-- Used for: "Order Now" calls to action
+**Manual-dose Toggle** - the only in-flow button:
+- Default: Blue Soft background, Blue border, Blue text, 12px caption, semibold, padding 6px 12px, with a 12px sliders icon
+- Hover: background deepens to Blue Border
+- Pressed (`aria-pressed="true"`): solid Blue background, white text, small shadow - the pill flips from "off" to "on" state
+- Used for: "ระบุเอง" / "ปิด" manual dose mode
 
-**Secondary CTA** - The alternative action button:
-- Default: bg `#FFFFFF`, text `#393C41` (Graphite), same dimensions and border pattern as primary
-- Transition: identical timing to primary (0.33s)
-- Used for: "View Inventory" alongside primary CTA
+**Error-boundary Retry Button** - full-width of its container:
+- Background: Accent Gradient, white semibold text, 15px, padding 10px 24px, pill radius
+- Hover: brightness lifts 8%
+- Used for: "ลองใหม่" recovery action
 
-**Nav Button** - Top navigation items:
-- Default: bg transparent, text `#171A20` (Carbon Dark), fontSize 14px, fontWeight 500, borderRadius 4px, padding 4px 16px, minHeight 32px
-- Transition: `color 0.33s, background-color 0.33s`
-- Active/expanded: subtle background highlight
-- Used for: "Vehicles", "Energy", "Charging", "Discover", "Shop"
-
-**Text Link** - In-content actions:
-- Default: text `#5C5E62` (Pewter), fontSize 14px, fontWeight 400, no background, no border
-- Hover: underline decoration with box-shadow transition
-- Transition: `box-shadow 0.33s cubic-bezier(0.5, 0, 0, 0.75), color 0.33s`
-- Used for: "Learn", "Order", "Experience", "New", "Pre-Owned" links in dropdown panel
+**Skip Link** - off-canvas until focused:
+- Blue background, white text, pill radius, positioned top-left; slides into view on keyboard focus
 
 ### Cards & Containers
 
-**Vehicle Card** (Navigation panel):
-- Background: transparent (inherits panel white)
-- Border: none
-- Shadow: none
-- Content: vehicle image (transparent PNG) + model name centered below + two text links
-- Layout: 3-column grid within the dropdown panel
-- No hover animation on the card itself - interaction is via the text links beneath
+**Input Card** (the main workflow panel):
+- Background: Surface (white in light mode), 1px Border hairline, 16px radius
+- Elevation: two-layer soft shadow (`--shadow-md`) that reads as "lifted paper", not "floating glass"
+- Inner padding: 24px mobile, 32px desktop; children stack with 16-24px gaps
 
-**Category Card** (Homepage lower section):
-- Background: full-bleed landscape photography
-- Border radius: approximately 12px (subtly rounded)
-- Overflow: hidden (clips image to rounded corners)
-- Text: white label in top-left corner ("Sport Sedan", "Midsize SUV")
-- Size: large format, approximately 2:1 aspect ratio
-- No shadow, no border, no overlay gradient - text relies on image darkness for contrast
+**Result Panel** (inside the input card):
+- Background: Blue Soft, 1px Blue Border, 16px radius, 24px padding
+- Contains: "ผลลัพธ์" micro-label with a 7px blue dot, the large value, the secondary mg/dose line, and a notes block separated by a Blue Border hairline
+
+**Empty State**:
+- Same 16px radius but dashed Border Strong and transparent background
+- Centered 28px calculator icon (Pewter) + placeholder-colored prompt ("กรุณากรอกน้ำหนัก" / "กรุณากรอกขนาดยา (mg/kg/dose)")
 
 ### Inputs & Forms
-- Background: transparent
-- Text color: `#171A20` (Carbon Dark)
-- Placeholder color: `#8E8E8E` (Silver Fog)
-- Border: minimal, inherits from browser defaults
-- Font: Universal Sans Text, 14px
-- The "Ask a Question" chatbot input bar sits at the viewport bottom with a clean white background and subtle border
+- Height: 52px, full width, 12px radius
+- Rest: Surface Muted fill, 1px Border, placeholder in Silver
+- Hover: border deepens to Border Strong
+- Focus: fill flips to Surface (white), border flips to Blue, plus a 4px Blue focus ring (`--shadow-focus`) - no double outline
+- Number inputs hide native spinners; weight input carries a "kg" suffix sitting inside the field on the right (Pewter, medium weight, non-interactive)
+- Select uses the same field styling with a chevron icon nested in a 26px circle chip (Surface fill, Border hairline) on the right
+- Step numbers: 22px circles (50% radius) in Blue Soft with a Blue semibold numeral, placed inline before each field label
 
-### Navigation
-- **Desktop**: Centered horizontal nav with TESLA wordmark (spaced uppercase letters) on the left, five category buttons center-aligned, and three icon buttons (help, globe/language, account) on the right
-- **Background**: White (transitions from transparent over dark hero to opaque white on scroll via class toggle `tds-site-header--white-background`)
-- **Dropdown panel**: Full-width white panel with 3-column vehicle grid + right sidebar text links, no shadow, no border - appears seamlessly below the nav
-- **Sticky behavior**: `sticky-without-slide` class - stays at top without slide-in animation
-- **Mobile**: Hamburger collapse pattern
-- **No visible separator** between nav and content - the nav blends with the hero
-
-### Image Treatment
-- **Hero**: Full-viewport (100vh) sections with cinematic photography - edge-to-edge, no padding, no margin
-- **Vehicle images**: Transparent PNG renders on white background in dropdown panel, studio-quality 3/4 angle shots
-- **Category cards**: Landscape photography with approximately 2:1 ratio, rounded corners (12px)
-- **Carousel**: Auto-advancing with dot indicators (3 dots) and left/right arrow navigation on edges
-- **Lazy loading**: Below-fold sections use lazy loading, rendering as blank white until scrolled into view
-
-### Persistent Chat Bar
-- Anchored to viewport bottom, visible across all sections
-- White background with subtle border
-- Contains: chat icon + "Ask a Question" label + placeholder text ("What's Dog Mode?") + send icon + "Schedule a Drive Today" secondary CTA
-- Schedule CTA has a teal/blue icon accent
+### Layout Rhythm
+- Skip link -> hero (title + subtitle) -> input card (select, weight, optional manual dose, result) - no header bar, no footer chrome
+- The page intentionally has no persistent navigation: the entire app fits one screen and one task
 
 ## 5. Layout Principles
 
 ### Spacing System
 - **Base unit**: 8px
-- **Common values**: 8px (0.5rem), 16px (1rem), 21.44px (1.34rem)
-- **Button padding**: 4px (minimal outer) with content centering via flexbox, 4px 16px for nav items
-- **Section padding**: Full-viewport sections with content centered vertically
-- **Card gap**: approximately 16px between category cards
+- **Page padding**: 16px horizontal on mobile, 40px vertical top, 48px bottom
+- **Card padding**: 24px mobile, 32px desktop
+- **Field gaps**: 8px between label and input, 16px between fields, 24px between hero and card
 
 ### Grid & Container
-- **Max width**: approximately 1383px (full viewport width used for most content)
-- **Hero**: Full-bleed, edge-to-edge, 100vh sections
-- **Navigation panel**: 3-column grid for vehicle cards with right-aligned text sidebar (~70/30 split)
-- **Category cards**: 2-up horizontal layout (large left card + smaller right card)
+- **Max width**: 440px - a deliberately narrow column keeps the form focusable and thumb-friendly
+- Everything is centered horizontally; the hero is left-aligned within the same 440px column
+- The top glow spans the full viewport width behind the column
 
 ### Whitespace Philosophy
-Tesla uses whitespace as a luxury signal. The generous vertical spacing between sections (each section is a full viewport height) means you can only see one "message" at a time - one car, one model name, one CTA pair. This creates a gallery-like browsing experience where each scroll is a deliberate transition, not a continuous feed. White space is not empty - it's the frame that elevates each vehicle to the status of art piece.
+The layout gives each piece of the task its own zone: the hero announces the tool, the card is the workspace, the tinted panel is the answer. Whitespace between zones (24-32px gaps) lets the eye travel select -> weight -> result without scanning clutter. The empty state keeps that rhythm honest - before data entry, the result slot is a quiet dashed placeholder, not dead space.
 
 ### Border Radius Scale
 | Value | Context |
 |-------|---------|
-| 0px | Most elements - sharp edges are the default |
-| 4px | Buttons (primary, secondary, nav items) - barely perceptible rounding |
-| ~12px | Category cards - noticeable but restrained rounding on larger surfaces |
-| 50% | Carousel dot indicators - perfect circles |
+| 8px | Small chips (chevron circle, step badges context) |
+| 12px | Inputs and select fields |
+| 16px | Cards, panels, result box |
+| 999px | Pills - toggle, retry button, skip link |
+| 50% | Step-number circles, status dots |
 
 ## 6. Depth & Elevation
 
 | Level | Treatment | Use |
 |-------|-----------|-----|
-| Level 0 (Flat) | No shadow, no border | Default state for all elements - cards, panels, buttons at rest |
-| Level 1 (Frost) | `rgba(255,255,255,0.75)` backdrop | Navigation bar on scroll - frosted glass transparency |
-| Level 2 (Overlay) | `rgba(128,128,128,0.65)` | Modal overlays and region/cookie popups |
-| Level 3 (Subtle) | `rgba(0,0,0,0.05)` | Minimal shadow hints on rare hover states |
+| Level 0 (Flat) | No shadow | Page background, inline text, notes |
+| Level 1 (Shadow-sm) | `0 1px 2px rgba(16,24,40,.05), 0 1px 3px rgba(16,24,40,.04)` | Small elements needing a hair of separation |
+| Level 2 (Shadow-md) | `0 2px 4px rgba(16,24,40,.04), 0 8px 24px -6px rgba(16,24,40,.10)` | The input card - the only elevated surface |
+| Focus Ring | `0 0 0 4px rgba(62,106,225,.16)` | Keyboard focus on inputs, selects, buttons |
 
 ### Shadow Philosophy
-Tesla's approach to elevation is essentially "none." The site avoids box-shadows entirely in its primary interface. Depth is communicated through three alternative strategies:
-1. **Z-index layering**: The sticky navigation sits above hero content through positioning, not shadow
-2. **Opacity-based transparency**: The frosted glass nav and overlay modals use background-color opacity rather than shadow to indicate layering
-3. **Photography-as-depth**: The full-bleed images create their own visual depth through perspective, lighting, and composition - making UI shadows redundant
+Elevation is a hierarchy with exactly two rungs: the card sits above the canvas, everything else sits on the card. The shadows are multi-layer and low-opacity - enough to separate, never enough to dramatize. In dark mode shadows nearly disappear (the palette is dark on dark), so separation comes from the 1px Border hairlines instead.
 
 ### Decorative Depth
-- No gradients, glows, or atmospheric effects on UI elements
-- The hero imagery itself provides all visual richness - sunset skies, reflected light on car surfaces, ground shadows from studio lighting
-- The carousel arrow buttons use a semi-transparent white background to float above the hero imagery without disrupting it
+- The only atmospheric effect is the fixed top glow, which exists to soften the canvas, not to decorate content
+- No element uses a glow, blur, or outline as decoration; `backdrop-filter` is not used anywhere in the app
+- The result panel achieves emphasis through tint (Blue Soft) and border, not through shadow or gradient
 
 ## 7. Do's and Don'ts
 
 ### Do
-- Let photography dominate every screen - the product IS the design
-- Use Electric Blue (`#3E6AE1`) exclusively for primary CTAs - never for decorative purposes
-- Maintain viewport-height sections for major content blocks - one message per screen
-- Keep typography at weight 400-500 only - no bold, no light, no extremes
-- Use 4px border-radius for all interactive elements - precision over playfulness
-- Trust whitespace as a luxury signal - never fill available space just because it's empty
-- Keep all transitions at 0.33s - consistency in motion is as important as consistency in color
-- Use transparent PNG vehicle imagery on white backgrounds for product showcases
-- Center CTAs horizontally below model names - the vertical rhythm is model → subtitle → buttons
-- Maintain the Display/Text font split - Display for hero-scale text only, Text for everything else
+- Keep the app a single screen with a single task flow: hero, card, result
+- Use Blue (`#3E6AE1`) for interactive states and the result value - it is the only chromatic color in the system
+- Elevate exactly one surface: the input card. Everything else lives flat on the canvas
+- Use 16px radius for panels and 12px for inputs, with pill shapes reserved for buttons
+- Show results inside the Blue Soft panel with the large tabular numeral as the loudest element
+- Keep field labels semibold with step-number circles so the two-step flow is self-explanatory
+- Use the accent gradient only on the retry button - it is a punctuation mark, not a theme
+- Support `prefers-reduced-motion` and keep every transition at 0.25s
+- Let dark mode re-tune the palette (lighter blue, slate surfaces) instead of inverting mechanically
 
 ### Don't
-- Add shadows to any element - elevation through shadow contradicts the flat, gallery aesthetic
-- Use more than one chromatic color besides the blue CTA - the palette is intentionally monochrome-plus-one
-- Apply gradients, patterns, or decorative backgrounds to surfaces - white and photography are the only backgrounds
-- Use text larger than 40px on the web - the typography is deliberately restrained even at hero scale
-- Add borders to cards or containers - separation is achieved through spacing, not lines
-- Use uppercase text transforms - Tesla's confidence is expressed through lowercase calm
-- Introduce rounded-pill buttons or large border-radii - the 4px radius is deliberate and precise
-- Override the Universal Sans family with other typefaces - cross-platform consistency is a core brand value
-- Add hover animations with scale/translate transforms - Tesla's interactions are color-only (background and border transitions)
-- Clutter the viewport with multiple CTAs - every screen should have at most two action buttons
+- Add a header, navigation, or footer chrome - the tool has no navigation needs
+- Use more than one chromatic color or introduce semantic colors (green/red/yellow) for status
+- Apply the gradient to content text, cards, or icons - only the retry button
+- Use shadows on inputs, buttons, or inline elements - elevation is reserved for the card
+- Use uppercase transforms beyond the 11px notes label
+- Use fonts that cannot render Thai well - the stack must always include Thai-capable fallbacks
+- Add hover animations with scale or translate transforms - interaction is color- and border-only
+- Crowd the 440px column - one card, two fields, one result
 
 ## 8. Responsive Behavior
 
 ### Breakpoints
 | Name | Width | Key Changes |
 |------|-------|-------------|
-| Mobile | <768px | Single-column layout, hamburger nav replaces horizontal labels, hero text scales to ~28px, CTA buttons stack vertically, category cards become full-width |
-| Tablet | 768-1024px | 2-column nav panel, hero maintains full-viewport height, CTAs remain side-by-side, reduced horizontal padding |
-| Desktop | 1024-1440px | Full horizontal nav, 3-column vehicle grid in dropdown, hero at 40px, side-by-side CTAs at 200px/160px width |
-| Large Desktop | >1440px | Content remains centered, hero photography scales to fill wider viewports, max-width container for nav panel content |
+| Mobile | <600px | Result value 38px, hero title 28px, card padding 24px |
+| Tablet+ | >=600px | Result value 48px, hero title 32px, card padding 32px, larger gaps between zones |
+
+The layout is single-column at every size; there are no sidebar or multi-column variants. The 440px column keeps the form centered on phones, tablets, and desktops alike.
 
 ### Touch Targets
-- Primary CTA buttons: 200px × 40px minimum (well above 44×44px WCAG requirement)
-- Nav buttons: minimum 32px height with 4px 16px padding - adequate touch targets
-- Carousel arrows: ~44px square white semi-transparent buttons at viewport edges
-- Text links ("Learn", "Order"): 14px text with adequate line-height spacing for touch
+- Inputs: 52px tall (above the 44px WCAG minimum) with full-width tap area
+- Manual toggle: 32px+ tall pill with 6px 12px padding - adequate for touch
+- Select: 52px tall with a 26px chevron chip
+- Step circles and dots are decorative companions to labels, never standalone targets
 
 ### Collapsing Strategy
-- **Navigation**: Horizontal category buttons (Vehicles, Energy, Charging, Discover, Shop) collapse to a hamburger/drawer menu on mobile
-- **Hero CTA pair**: Side-by-side buttons on desktop stack vertically on mobile
-- **Category cards**: 2-up horizontal layout collapses to single-column full-width on mobile
-- **Vehicle grid**: 3-column grid in desktop nav panel becomes 2-column on tablet, single-column on mobile
-- **Spacing**: Section vertical padding remains generous (viewport-height sections) but horizontal padding reduces
+- The manual-dose field slides in below the weight field (0.25s fade + 4px translate) and is removed from the flow entirely when toggled off
+- The result panel always occupies the same slot - it swaps between the dashed empty state and the tinted result, so nothing shifts on the page
 
-### Image Behavior
-- Hero images are fully responsive and fill the entire viewport at every breakpoint
-- Vehicle carousel images use `object-fit: cover` to maintain cinematic composition across widths
-- Transparent PNG vehicle images in the nav panel scale proportionally within their grid cells
-- Category card images maintain their landscape ratio and clip via `overflow: hidden` with border-radius
+### Behavior Notes
+- Keyboard focus is visible everywhere: inputs and selects get the Blue focus ring, buttons get the ring via `:focus-visible`
+- `prefers-reduced-motion` reduces all animation and transition durations to ~0
+- The theme-color meta and app color scheme react to `prefers-color-scheme` automatically
 
 ## 9. Agent Prompt Guide
 
 ### Quick Color Reference
-- Primary CTA: "Electric Blue (#3E6AE1)"
-- Background: "Pure White (#FFFFFF)"
-- Heading text: "Carbon Dark (#171A20)"
-- Body text: "Graphite (#393C41)"
-- Tertiary text: "Pewter (#5C5E62)"
-- Placeholder: "Silver Fog (#8E8E8E)"
-- Alternate surface: "Light Ash (#F4F4F4)"
-- Dark surface: "Carbon Dark (#171A20)"
+- Accent / result value: "Blue (#3E6AE1)"
+- Tinted panel: "Blue Soft" (`rgba(62,106,225,0.09)` light)
+- Page background: "Canvas (#F6F8FB)"
+- Card surface: "Surface (#FFFFFF)"
+- Input fill: "Surface Muted (#F1F4F9)"
+- Hairline borders: "Border (#E4E8F0)"
+- Headings: "Ink (#101828)"
+- Body text: "Slate (#475467)"
+- Tertiary text: "Pewter (#667085)"
+- Placeholder: "Silver (#98A2B3)"
+- Dark mode: canvas `#0B0F19`, surface `#121826`, accent `#6F8FF2`
 
 ### Example Component Prompts
-- "Create a hero section with a full-viewport background image, centered 'Model Y' title in Universal Sans Display at 40px weight 500 in white, a subtitle line below, and two buttons side by side: a primary Electric Blue (#3E6AE1) 'Order Now' button and a secondary white 'View Inventory' button, both with 4px border-radius and 40px height"
-- "Design a navigation bar with a spaced-letter wordmark on the left, five text buttons (14px, weight 500, Carbon Dark #171A20) centered, and three icon buttons on the right, all on a white background with no shadow or border"
-- "Build a vehicle card grid with 3 columns, each card showing a transparent-background car image above a model name (17px, weight 500, Carbon Dark) and two text links (14px, weight 400, Pewter #5C5E62) labeled 'Learn' and 'Order', on a pure white surface with no borders or shadows"
-- "Create a category card with full-bleed landscape photography, 12px border-radius, overflow hidden, and a white text label ('Sport Sedan') positioned in the top-left corner with no overlay gradient"
-- "Design a persistent bottom bar with a chat input ('Ask a Question' placeholder), a send icon, and a secondary CTA ('Schedule a Drive Today') with a teal icon, anchored to the viewport bottom on a white background"
+- "Build the input card: a white Surface panel with 1px Border, 16px radius, soft two-layer shadow, 24px padding, containing the drug select and weight field stacked with 16px gaps"
+- "Create the result panel: Blue Soft background, Blue Border hairline, 16px radius, with a 'ผลลัพธ์' micro-label (uppercase-ish caption, Blue, with a 7px Blue dot), the 38-48px semibold Blue tabular value, the secondary Pewter mg/dose line, and a notes block separated by a Blue Border hairline"
+- "Style a form input: 52px tall, 12px radius, Surface Muted fill, 1px Border that deepens on hover; on focus flip to white fill with a Blue border and a soft 4px Blue ring - no double outline"
+- "Design the manual-dose toggle: a pill (999px) with Blue Soft fill, Blue border, Blue semibold 12px text and a small sliders icon; pressed state flips to solid Blue with white text"
+- "Add an empty state for the result slot: transparent background, dashed Border Strong, 16px radius, centered Pewter calculator icon above a Silver hint message"
 
 ### Iteration Guide
-When refining existing screens generated with this design system:
-1. Focus on ONE component at a time - Tesla's system is so minimal that each element must be pixel-perfect
-2. Reference specific color names and hex codes from this document - there are only 6-7 colors in the entire system
-3. Use natural language descriptions, not CSS values - "barely rounded corners" not "border-radius: 4px"
-4. Describe the desired "feel" alongside specific measurements - "gallery-like silence between sections" communicates the whitespace philosophy better than "margin-bottom: 100vh"
-5. Always verify that photography is doing the emotional heavy-lifting - if the UI itself feels "designed," it's too much
+When refining screens generated with this design system:
+1. Focus on ONE component at a time - the system is small enough that each element must be pixel-perfect
+2. Reference specific color names and hex codes from this document - there are only 7 neutral tones plus one accent
+3. Use natural language descriptions alongside measurements - "soft two-layer shadow" communicates more than a shadow value alone
+4. Always check both light and dark mode - the dark palette is re-tuned, not inverted
+5. Preserve the single-screen flow - if a change requires navigation, it does not belong in this app

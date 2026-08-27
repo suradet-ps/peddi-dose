@@ -109,7 +109,7 @@ pedi-dose/
 │   ├── utils/
 │   │   └── doseMath.ts            # Pure dose calculation functions
 │   ├── styles/
-│   │   ├── tokens.css             # Design tokens (Tesla-inspired)
+│   │   ├── tokens.css             # Design tokens (modern slate + blue accent)
 │   │   ├── base.css               # CSS reset + globals
 │   │   └── app.css                # Component styles
 │   ├── App.tsx                    # Root composition

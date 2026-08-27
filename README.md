@@ -1,6 +1,6 @@
 # Peddi-Dose
 
-> Pediatric dose calculator for healthcare professionals — fast, accurate, mobile-first.
+> Pediatric dose calculator for healthcare professionals - fast, accurate, mobile-first.
 
 [![License](https://img.shields.io/github/license/suradet-ps/pedi-dose?color=blue&logo=opensourceinitiative&logoColor=ffffff)](https://github.com/suradet-ps/pedi-dose/blob/main/LICENSE)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue?logo=git&logoColor=ffffff)](https://github.com/suradet-ps/pedi-dose)
@@ -18,15 +18,15 @@
 
 ## Features
 
-- **Real-time calculation** — results update instantly as you type or select a drug; no submit button required.
-- **Dual-unit display** — primary result in **ml** with **mg/dose** secondary value.
-- **Manual dose mode** — override the standard range by specifying a custom mg/kg/dose value.
-- **Mobile-first UI** — optimized for on-the-go clinical use, installable as a PWA.
-- **Offline capable** — fully functional without a network connection after first visit.
-- **Persistent selection** — last-used drug is remembered via `localStorage`.
-- **Dark mode** — automatically follows the system `prefers-color-scheme` setting.
-- **Accessible** — keyboard navigable, screen-reader friendly, visible focus indicators.
-- **10 pre-loaded drugs** — covers common pediatric antibiotics, antipyretics, antihistamines, and more.
+- **Real-time calculation** - results update instantly as you type or select a drug; no submit button required.
+- **Dual-unit display** - primary result in **ml** with **mg/dose** secondary value.
+- **Manual dose mode** - override the standard range by specifying a custom mg/kg/dose value.
+- **Mobile-first UI** - optimized for on-the-go clinical use, installable as a PWA.
+- **Offline capable** - fully functional without a network connection after first visit.
+- **Persistent selection** - last-used drug is remembered via `localStorage`.
+- **Dark mode** - automatically follows the system `prefers-color-scheme` setting.
+- **Accessible** - keyboard navigable, screen-reader friendly, visible focus indicators.
+- **10 pre-loaded drugs** - covers common pediatric antibiotics, antipyretics, antihistamines, and more.
 
 ---
 
@@ -149,13 +149,13 @@ pedi-dose/
 
 This project prioritizes strict type safety:
 
-- **`strict: true`** — all strict checks enabled (noImplicitAny, strictNullChecks, etc.)
-- **`noUncheckedIndexedAccess`** — every array/record access is safe by default
-- **`exactOptionalPropertyTypes`** — no accidental `undefined` assignments
-- **`verbatimModuleSyntax`** — enforces `import type` for type-only imports
-- **Discriminated unions** — `DoseResult` is `AutoDoseResult | ManualDoseResult` (no optional `mode` fields)
-- **Zero `any`** — no type assertions, no `@ts-ignore`, no non-null assertions
-- **Explicit hook return types** — every custom hook declares its own result interface
+- **`strict: true`** - all strict checks enabled (noImplicitAny, strictNullChecks, etc.)
+- **`noUncheckedIndexedAccess`** - every array/record access is safe by default
+- **`exactOptionalPropertyTypes`** - no accidental `undefined` assignments
+- **`verbatimModuleSyntax`** - enforces `import type` for type-only imports
+- **Discriminated unions** - `DoseResult` is `AutoDoseResult | ManualDoseResult` (no optional `mode` fields)
+- **Zero `any`** - no type assertions, no `@ts-ignore`, no non-null assertions
+- **Explicit hook return types** - every custom hook declares its own result interface
 
 ---
 

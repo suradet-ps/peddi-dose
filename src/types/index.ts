@@ -6,5 +6,7 @@ export type {
   DoseResult,
   DoseRangeOutput,
   ManualDoseOutput,
+  WeightStatus,
+  WeightValidationResult,
 } from './calculation';
 export type { CalculatorProps, ResultCardProps } from './components';

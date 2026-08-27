@@ -231,6 +231,28 @@
   pointer-events: none;
 }
 
+/* Field validation message */
+.field__message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-medium);
+  line-height: 1.45;
+  border-radius: var(--r-sm);
+}
+
+.field__message svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.field__message--warning {
+  color: var(--color-warning);
+  background-color: var(--color-warning-soft);
+}
+
 /* ============================================================
  * Result
  * ============================================================ */
@@ -312,6 +334,16 @@
 
 .result--empty svg {
   color: var(--text-tertiary);
+}
+
+.result--error {
+  color: var(--color-error);
+  background-color: var(--color-error-soft);
+  border: 1px solid var(--color-error-border);
+}
+
+.result--error svg {
+  color: var(--color-error);
 }
 
 /* ============================================================

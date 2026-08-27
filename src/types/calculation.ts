@@ -29,3 +29,10 @@ export interface ManualDoseOutput {
   finalMl: string;
   totalMg: number;
 }
+
+export type WeightStatus = 'ok' | 'warning' | 'error';
+
+export interface WeightValidationResult {
+  status: WeightStatus;
+  message: string | null;
+}

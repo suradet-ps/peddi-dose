@@ -12,6 +12,7 @@ export default function App() {
     setIsManualMode,
     manualDose,
     setManualDose,
+    weightValidation,
     result,
   } = useDoseCalculator();
 
@@ -31,6 +32,7 @@ export default function App() {
           manualDose={manualDose}
           setManualDose={setManualDose}
           selectedDrug={selectedDrug}
+          weightValidation={weightValidation}
           result={result}
         />
       </main>

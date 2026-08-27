@@ -12,6 +12,13 @@
   --gradient-accent: linear-gradient(135deg, #3e6ae1 0%, #6f8ff2 100%);
   --glow: rgba(62, 106, 225, 0.08);
 
+  /* === Semantic === */
+  --color-warning: #b45309;
+  --color-warning-soft: rgba(180, 83, 9, 0.1);
+  --color-error: #dc2626;
+  --color-error-soft: rgba(220, 38, 38, 0.08);
+  --color-error-border: rgba(220, 38, 38, 0.25);
+
   /* === Surfaces === */
   --color-canvas: #f6f8fb;
   --color-surface: #ffffff;
@@ -78,6 +85,12 @@
     --color-accent-border: rgba(111, 143, 242, 0.32);
     --gradient-accent: linear-gradient(135deg, #6f8ff2 0%, #9db4f7 100%);
     --glow: rgba(111, 143, 242, 0.12);
+
+    --color-warning: #fbbf24;
+    --color-warning-soft: rgba(251, 191, 36, 0.12);
+    --color-error: #f87171;
+    --color-error-soft: rgba(248, 113, 113, 0.12);
+    --color-error-border: rgba(248, 113, 113, 0.3);
 
     --color-canvas: #0b0f19;
     --color-surface: #121826;

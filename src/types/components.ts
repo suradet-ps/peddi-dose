@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from 'react';
 import type { Drug } from './drug';
-import type { DoseResult } from './calculation';
+import type { DoseResult, WeightValidationResult } from './calculation';
 
 export interface CalculatorProps {
   weight: string;
@@ -12,10 +12,12 @@ export interface CalculatorProps {
   manualDose: string;
   setManualDose: Dispatch<SetStateAction<string>>;
   selectedDrug: Drug;
+  weightValidation: WeightValidationResult;
   result: DoseResult | null;
 }
 
 export interface ResultCardProps {
   result: DoseResult | null;
   isManualMode: boolean;
+  weightValidation: WeightValidationResult;
 }

@@ -4,9 +4,9 @@ import { useDrugSelector } from './useDrugSelector';
 import type { UseDrugSelectorResult } from './useDrugSelector';
 import { useManualDose } from './useManualDose';
 import type { UseManualDoseResult } from './useManualDose';
-import { calculateDoseRange, calculateManualDose } from '@/utils/doseMath';
+import { calculateDoseRange, calculateManualDose, validateWeight } from '@/utils/doseMath';
 import type { Drug } from '@/types/drug';
-import type { DoseResult } from '@/types/calculation';
+import type { DoseResult, WeightValidationResult } from '@/types/calculation';
 
 export interface UseDoseCalculatorResult {
   weight: string;
@@ -18,6 +18,7 @@ export interface UseDoseCalculatorResult {
   setIsManualMode: Dispatch<SetStateAction<boolean>>;
   manualDose: string;
   setManualDose: Dispatch<SetStateAction<string>>;
+  weightValidation: WeightValidationResult;
   result: DoseResult | null;
 }
 
@@ -38,9 +39,14 @@ export function useDoseCalculator(): UseDoseCalculatorResult {
     setManualDose('');
   };
 
+  const weightValidation = useMemo<WeightValidationResult>(() => {
+    if (weight.trim() === '') return { status: 'ok', message: null };
+    return validateWeight(parseFloat(weight));
+  }, [weight]);
+
   const result = useMemo<DoseResult | null>(() => {
     const w = parseFloat(weight);
-    if (isNaN(w) || w <= 0) return null;
+    if (isNaN(w) || w <= 0 || weightValidation.status === 'error') return null;
 
     if (isManualMode) {
       const d = parseFloat(manualDose);
@@ -63,7 +69,7 @@ export function useDoseCalculator(): UseDoseCalculatorResult {
       totalMaxMg,
       notes: selectedDrug.notes,
     };
-  }, [weight, selectedDrug, isManualMode, manualDose]);
+  }, [weight, weightValidation.status, selectedDrug, isManualMode, manualDose]);
 
   return {
     weight,
@@ -75,6 +81,7 @@ export function useDoseCalculator(): UseDoseCalculatorResult {
     setIsManualMode,
     manualDose,
     setManualDose,
+    weightValidation,
     result,
   };
 }

@@ -1,167 +1,148 @@
 # Pedi-Dose
 
-> Pediatric dose calculator for healthcare professionals - fast, accurate, mobile-first.
-
-[![License: MIT](https://img.shields.io/github/license/suradet-ps/pedi-dose?color=blue)](https://github.com/suradet-ps/pedi-dose/blob/main/LICENSE)
-[![CI](https://img.shields.io/github/actions/workflow/status/suradet-ps/pedi-dose/ci.yml?label=CI&logo=github)](https://github.com/suradet-ps/pedi-dose/actions/workflows/ci.yml)
-[![Version](https://img.shields.io/github/package-json/v/suradet-ps/pedi-dose?label=version)](https://github.com/suradet-ps/pedi-dose/blob/main/package.json)
-[![Last Commit](https://img.shields.io/github/last-commit/suradet-ps/pedi-dose?logo=git)](https://github.com/suradet-ps/pedi-dose/commits/main)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen?logo=github)](https://github.com/suradet-ps/pedi-dose/pulls)
-
----
-
-**Pedi-Dose** is a progressive web application (PWA) that helps pharmacists, doctors, and healthcare professionals calculate pediatric liquid medication dosages quickly and accurately. It computes dose ranges in both milliliters (ml) and milligrams per dose (mg/dose) based on patient weight, with administration guidance for every drug.
+```
+██████╗ ███████╗██████╗ ██╗██████╗  ██████╗  ██████╗███████╗
+██╔══██╗██╔════╝██╔══██╗██║██╔══██╗██╔═══██╗██╔════╝██╔════╝
+██████╔╝█████╗  ██║  ██║██║██║  ██║██║   ██║███████╗█████╗
+██╔═══╝ ██╔══╝  ██║  ██║██║██║  ██║██║   ██║╚════██║██╔══╝
+██║     ███████╗██████╔╝██║██████╔╝╚██████╔╝██████╔╝███████╗
+╚═╝╚══════╝╚═════╝ ╚═╝╚═════╝  ╚═════╝ ╚═════╝╚══════╝
+```
 
 ---
 
-## Features
+## ◆ PULSE
 
-- **Real-time calculation** - results update instantly as you type or select a drug; no submit button required.
-- **Dual-unit display** - primary result in **ml** with **mg/dose** secondary value.
-- **Manual dose mode** - override the standard range by specifying a custom mg/kg/dose value.
-- **Mobile-first UI** - optimized for on-the-go clinical use, installable as a PWA.
-- **Offline capable** - fully functional without a network connection after first visit.
-- **Persistent selection** - last-used drug is remembered via `localStorage`.
-- **Dark mode** - automatically follows the system `prefers-color-scheme` setting.
-- **Accessible** - keyboard navigable, screen-reader friendly, visible focus indicators.
-- **11 pre-loaded drugs** - covers common pediatric antibiotics, antipyretics, antihistamines, and more.
+The dose is needed at the bedside, not after the calculation. Pedi-Dose
+is a PWA that computes pediatric liquid doses the moment the weight is
+in - ml first, mg per dose beside it - with administration guidance
+for every drug, a manual mode for the non-standard mg/kg/dose, and a
+library of 11 common pediatric drugs at their real concentrations.
+Installable, offline-capable, dark-mode-following: it works in the
+ward, in the pharmacy, and in the pocket.
 
----
+| Real-time ▣ | Dual-unit ▣ | Offline ▣ | 11 drugs ▣ |
+|---|---|---|---|
 
-## Tech Stack
+*The calculator - weight in, both units out - is sealed.*
 
-| Layer | Technology |
-|-------|-----------|
-| **Language** | [TypeScript 6](https://www.typescriptlang.org/) (strict mode) |
-| **Framework** | [React 19](https://react.dev/) |
-| **Build tool** | [Vite 8](https://vite.dev/) + [SWC](https://swc.rs/) |
-| **PWA** | [vite-plugin-pwa](https://vite-pwa-org.netlify.app/) (Workbox) |
-| **Linting** | [ESLint 10](https://eslint.org/) (flat config, type-aware) |
-| **Formatting** | [Prettier](https://prettier.io/) |
-| **Package manager** | [Bun](https://bun.sh/) |
+> Built with React 19 + TypeScript 6, strict to the last `any` -
+> zero type assertions, zero unchecked access, zero lies.
+>
+> **suradet-ps**, artifact keeper
 
 ---
 
-## Getting Started
+## ◆ IGNITION
 
-### Prerequisites
+One runtime, four commands.
+
+```
+⟫ git clone https://github.com/suradet-ps/pedi-dose.git
+⟫ cd pedi-dose
+⟫ bun install
+⟫ bun run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173).
+
+```
+⟫ bun run build       # type-check, then Vite build
+⟫ bun run typecheck   # tsc --noEmit, strict
+⟫ bun run lint        # ESLint, type-aware
+⟫ bun run format      # Prettier
+```
+
+<details>
+<summary>Prerequisites</summary>
 
 - [Bun](https://bun.sh/) v1.1+
 
-### Install
+Deployment: Vercel auto-deploys every push to `main` (`vercel.json`
+carries the SPA rewrite and PWA service-worker headers).
 
-```bash
-git clone https://github.com/suradet-ps/pedi-dose.git
-cd pedi-dose
-bun install
-```
-
-### Development
-
-```bash
-bun run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-### Production Build
-
-```bash
-bun run build      # type-checks + Vite build
-bun run preview    # preview the production bundle
-```
-
-### Quality Checks
-
-```bash
-bun run typecheck  # tsc --noEmit (strict)
-bun run lint       # ESLint with type-aware rules
-bun run format     # Prettier
-```
+</details>
 
 ---
 
-## Available Drugs
+## ◆ ANATOMY
 
-| Drug | Concentration | Category |
-|------|--------------|----------|
-| Amoxycillin | 250 mg / 5 ml | Antibiotic |
-| Augmentin (Co-amoxiclav) | 228.5 mg / 5 ml | Antibiotic |
-| Bactrim (Co-trimoxazole) | 40 mg / 5 ml | Antibiotic |
-| CPM (Chlorpheniramine) | 2 mg / 5 ml | Antihistamine |
-| Dicloxacillin | 62.5 mg / 5 ml | Antibiotic |
-| Domperidone | 5 mg / 5 ml | Antiemetic |
-| Erythromycin | 125 mg / 5 ml | Antibiotic |
-| Guafenesine (Guaifenesin) | 100 mg / 5 ml | Mucolytic |
-| Ibuprofen | 100 mg / 5 ml | Antipyretic |
-| Paracetamol | 120 mg / 5 ml | Antipyretic |
-| Salbutamol (Ventolin) | 2 mg / 5 ml | Bronchodilator |
+One form, two results, a drug library typed to the last unit.
 
-> Drug data is maintained in [`src/data/drugData.ts`](src/data/drugData.ts) and uses `as const satisfies readonly Drug[]` for full type safety.
-
----
-
-## TypeScript Architecture
-
-This project prioritizes strict type safety:
-
-- **`strict: true`** - all strict checks enabled (noImplicitAny, strictNullChecks, etc.)
-- **`noUncheckedIndexedAccess`** - every array/record access is safe by default
-- **`exactOptionalPropertyTypes`** - no accidental `undefined` assignments
-- **`verbatimModuleSyntax`** - enforces `import type` for type-only imports
-- **Discriminated unions** - `DoseResult` is `AutoDoseResult | ManualDoseResult` (no optional `mode` fields)
-- **Zero `any`** - no type assertions, no `@ts-ignore`, no non-null assertions
-- **Explicit hook return types** - every custom hook declares its own result interface
+- **Calculates** - results update as you type: no submit button, no
+  stale number on screen. The dose range appears in ml with mg/dose
+  beside it.
+- **Overrides** - manual dose mode takes a custom mg/kg/dose and
+  re-derives both units - the standard range steps aside without
+  disappearing.
+- **Validates** - weight plausibility is checked with warnings before
+  a dose is offered; the impossible is flagged, not computed.
+- **Remembers** - the last-used drug persists in `localStorage`; the
+  form opens where the last patient left it.
+- **Types** - `DoseResult` is a discriminated union
+  (`AutoDoseResult | ManualDoseResult`) with no optional mode fields;
+  the 11-drug table is `as const satisfies readonly Drug[]` - a drug
+  cannot drift out of type.
+- **Works anywhere** - a Workbox PWA: installable, functional offline
+  after first visit, keyboard-navigable, screen-reader-friendly, and
+  dark-mode-native.
 
 ---
 
-## Deployment
+## ◆ RITUALS
 
-The app is deployed via **Vercel** with automatic deploys on every push to `main`.
+**The core ceremony** - the bedside dose:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fsuradet-ps%2Fpedi-dose)
+1. Enter the weight. The range appears before the next breath of the
+   keyboard - no submit, no waiting.
+2. Select the drug from 11 pre-loaded entries; the concentration and
+   administration guidance answer beside it.
+3. When the standard range is wrong for this patient, switch to manual
+   mg/kg/dose - both units re-derive.
+4. Verify against the chart, then administer. The disclaimer is part
+   of the ritual: the tool assists, the clinician decides.
 
-### Manual Vercel CLI
+**The ceremony of the unit** - ml is the primary number because the
+syringe reads ml; mg per dose is the secondary because the formulary
+writes it. Both are shown, neither is hidden.
 
-```bash
-bun install -g vercel
-bun run build
-vercel --prod
-```
-
-Configuration lives in `vercel.json` (SPA rewrite + PWA service-worker headers).
+**The ceremony of the offline page** - the ward wifi dies and the
+calculator does not notice. After one visit, every drug, every
+concentration, and every calculation lives on the device.
 
 ---
 
-## Contributing
+## ◆ ECHOES
 
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feat/my-feature`
-3. Commit your changes using [conventional commits](https://www.conventionalcommits.org/)
-4. Push to your branch: `git push origin feat/my-feature`
-5. Open a pull request
-
-### Commit Convention
-
-This project follows [Conventional Commits](https://www.conventionalcommits.org/):
+**Where this artifact is heading**
 
 ```
-feat: add new drug calculation mode
-fix: correct rounding for low-weight patients
-refactor: extract dose formatting utilities
-chore(deps): update typescript to v6
+calc     ▸ real-time dual-unit results, no submit ──────────────────── ▸ sealed
+override ▸ manual mg/kg/dose mode ──────────────────────────────────── ▸ sealed
+guard    ▸ weight plausibility warnings, vitest suite ──────────────── ▸ sealed
+offline  ▸ Workbox PWA, installable ────────────────────────────────── ▸ sealed
+types    ▸ strict, zero any, discriminated unions ──────────────────── ▸ sealed
 ```
 
+**Raising the artifact** - drug data lives in `src/data/drugData.ts`;
+the design system in `DESIGN.md`; commits follow conventional commits.
+Gates: `bun run typecheck`, `bun run lint`, `bun run format`, and the
+Vitest suite. Open an issue first to discuss a change.
+
+**Status** - CI runs checks, unit tests, and `bun audit` on every push.
+[Watch the gates](.github/workflows).
+
+> This software is a clinical decision-support tool for licensed
+> healthcare professionals. It does not replace independent clinical
+> judgment.
+
 ---
 
-## License
+```
+  ─────────────────────────────────────────
+   The syringe reads ml.
+   So does Pedi-Dose.
+  ─────────────────────────────────────────
+```
 
-Distributed under the MIT License. See [LICENSE](./LICENSE) for more information.
-
----
-
-## Disclaimer
-
-**This software is a clinical decision-support tool intended for use by licensed healthcare professionals only.** It does not replace independent clinical judgment. Users must verify all calculated dosages against the patient's medical history, organ function, and official prescribing information. The authors assume no liability for damages arising from the use of this software.
+Distributed under the [MIT License](LICENSE).
